@@ -232,7 +232,7 @@ void SystemTask::Work() {
           }
           break;
         case Messages::SetOffAlarm:
-          unlockedByButton = true;  // unlock so it is possible to press red stop button
+          unlockedByButton = true; // unlock so it is possible to press red stop button
           GoToRunning();
           displayApp.PushMessage(Pinetime::Applications::Display::Messages::AlarmTriggered);
           break;
@@ -242,7 +242,7 @@ void SystemTask::Work() {
           bleDiscoveryTimer = 5;
           break;
         case Messages::BleFirmwareUpdateStarted:
-          unlockedByButton = true;  // prevent no screen-locked popup on firmware update
+          unlockedByButton = true; // prevent no screen-locked popup on firmware update
           GoToRunning();
           wakeLocksHeld++;
           displayApp.PushMessage(Pinetime::Applications::Display::Messages::BleFirmwareUpdateStarted);
