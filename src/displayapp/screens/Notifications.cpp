@@ -257,9 +257,9 @@ Notifications::NotificationItem::NotificationItem(Pinetime::Controllers::AlertNo
 
 Notifications::NotificationItem::NotificationItem(const char* title,
                                                   const char* msg,
-                                                  uint8_t notifNr,
+                                                  uint8_t,
                                                   Controllers::NotificationManager::Categories category,
-                                                  uint8_t notifNb,
+                                                  uint8_t,
                                                   Pinetime::Controllers::AlertNotificationService& alertNotificationService,
                                                   Pinetime::Controllers::MotorController& motorController)
   : alertNotificationService {alertNotificationService}, motorController {motorController} {
@@ -281,7 +281,7 @@ Notifications::NotificationItem::NotificationItem(const char* title,
   lv_cont_set_layout(subject_container, LV_LAYOUT_COLUMN_LEFT);
   lv_cont_set_fit(subject_container, LV_FIT_NONE);
 
-  lv_obj_t* alert_count = lv_label_create(container, nullptr);
+ // lv_obj_t* alert_count = lv_label_create(container, nullptr);
  // lv_label_set_text_fmt(alert_count, "%i/%i", notifNr, notifNb);
  // lv_obj_align(alert_count, nullptr, LV_ALIGN_IN_TOP_RIGHT, 0, 16);
 
