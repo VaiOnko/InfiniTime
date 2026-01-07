@@ -4,6 +4,24 @@
 
 using namespace Pinetime::Applications::Widgets;
 
+namespace {
+  void event_handler(lv_obj_t* obj, lv_event_t event) {
+    auto* popupMessage = static_cast<PopupMessage*>(obj->user_data);
+    if (event == LV_EVENT_DELETE) {
+      popupMessage->HandleDelete(obj, event);
+    }
+  }
+}
+
+void PopupMessage::HandleDelete(lv_obj_t* object, lv_event_t event) {
+  if (object == popup && event == LV_EVENT_DELETE) {
+    // make sure to update the state of the popup pointer when someone
+    // deletes the popup object
+    popup = nullptr;
+    isHidden = true;
+  }
+}
+
 void PopupMessage::Create() {
   popup = lv_obj_create(lv_scr_act(), nullptr);
   lv_obj_set_size(popup, 90, 90);
@@ -30,6 +48,10 @@ void PopupMessage::Create() {
   lv_obj_set_style_local_border_width(lockTop, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, 6);
   lv_obj_set_style_local_border_side(lockTop, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, LV_BORDER_SIDE_FULL);
   lv_obj_set_style_local_border_opa(lockTop, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, LV_OPA_100);
+
+  // handler to keep popup pointer in sync
+  popup->user_data = this;
+  lv_obj_set_event_cb(popup, event_handler);
 
   lv_obj_set_hidden(popup, isHidden);
 }
