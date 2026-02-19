@@ -1,0 +1,10 @@
+diff a/src/displayapp/apps/Apps.h.in b/src/displayapp/apps/Apps.h.in	(rejected hunks)
+@@ -51,7 +51,7 @@ namespace Pinetime {
+       PineTimeStyle,
+       Terminal,
+       Infineat,
+-      CasioStyleG7710,
++      CasioStyleG7710
+     };
+ 
+     template <Apps>

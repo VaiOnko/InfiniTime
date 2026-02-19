@@ -1,0 +1,38 @@
+diff a/src/components/settings/Settings.h b/src/components/settings/Settings.h	(rejected hunks)
+@@ -154,6 +161,27 @@ namespace Pinetime {
+         return settings.PTS.weatherEnable;
+       };
+ 
++      void SetCasioWeather(PTSWeather weatherEnable) {
++        if (weatherEnable != settings.casio.weatherEnable)
++          settingsChanged = true;
++        settings.casio.weatherEnable = weatherEnable;
++      }
++
++      PTSWeather GetCasioWeather() const {
++        return settings.casio.weatherEnable;
++      }
++
++      void SetCasioWeatherSegment(CasioWeatherSegment weatherSegment) {
++        if (weatherSegment != settings.casio.weatherSegment)
++          settingsChanged = true;
++
++        settings.casio.weatherSegment = weatherSegment;
++      }
++
++      CasioWeatherSegment GetCasioWeatherSegment() const {
++        return settings.casio.weatherSegment;
++      }
++
+       void SetAppMenu(uint8_t menu) {
+         appMenu = menu;
+       };
+@@ -319,6 +347,8 @@ namespace Pinetime {
+ 
+         PineTimeStyle PTS;
+ 
++        CasioStyleG7710 casio;
++
+         WatchFaceInfineat watchFaceInfineat;
+ 
+         std::bitset<5> wakeUpMode {0};
